@@ -1,0 +1,264 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ * 
+ */
+
+/*# sourceMappingURL=custom.css.map */
+
+/* form upload */
+.form-select {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.form-control[type=file] {
+    overflow: hidden;
+}
+
+.form-control[type=file]:not(:disabled):not([readonly]) {
+    cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+    font: inherit;
+    -webkit-appearance: button;
+}
+  
+::file-selector-button {
+    font: inherit;
+    -webkit-appearance: button;
+}
+
+.form-control::file-selector-button {
+    padding: 0.375rem 0.75rem;
+    margin: -0.375rem -0.75rem;
+    -webkit-margin-end: 0.75rem;
+    margin-inline-end: 0.75rem;
+    color: #212529;
+    background-color: #e9ecef;
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: 1px;
+    border-radius: 0;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-control::-webkit-file-upload-button {
+      -webkit-transition: none;
+      transition: none;
+    }
+    .form-control::file-selector-button {
+      transition: none;
+    }
+}
+
+.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+    background-color: #dde0e3;
+}
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: #dde0e3;
+}
+
+/* multistep progress */
+.form-step {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.4s;
+}
+
+.form-step-active {
+    display: block;
+}
+
+@keyframes animate {
+    from {
+        transform: scale(1, 0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1, 1);
+        opacity: 1;
+    }
+}
+
+.progressbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 4rem 5rem 4rem;
+
+}
+
+.progressbar::before {
+    content: "";
+    background-color: #bdbdbd;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: 1;
+    transition: 0.4s ease;
+}
+
+.progression {
+    background-color: #2772b0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 0%;
+    z-index: 1;
+    transition: 0.4s ease;
+}
+
+.progress-step {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    border: 3px solid #b2bec3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    z-index: 3;
+}
+
+.progress-step::after {
+    content: attr(data-title);
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    font-size: 12px;
+    color: #666;
+}
+
+.progress-step.progress-step-active {
+    border-color: #2772b0;
+}
+
+/* Document */
+.pappersize {
+    background: #FFFFFF;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    color: #000;
+    padding: 0.2cm;
+}
+
+.surat {
+    width: 100%;
+}
+
+.srt {
+    text-align: center;
+}
+
+.header-srt {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 10px 0px;
+    border-bottom: double #000;
+    text-align: center;
+}
+
+.logo-srt {
+    width: 100px;
+}
+
+.id-srt {
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    width: 80%;
+}
+
+.add-srt {
+    margin: 16px 0px 0px 0px;
+    text-transform: capitalize;
+    text-align: center;
+    font-style: italic;
+    width: 80%;
+}
+
+.kd-srt {
+    font-size: 10pt;
+    text-transform: capitalize;
+}
+
+.opp-srt {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.name-srt {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+.no-srt {
+    /* font-weight: 100; */
+    text-transform: capitalize;
+}
+
+.isi-srt {
+    font-size: 11.5pt;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: 95%;
+}
+
+.isian {
+    width: 70%;
+}
+
+.signature {
+    float: right;
+    text-align: center;
+    text-transform: capitalize;
+    width: 5cm;
+    margin: 24px 20px 0px 0px;
+}
+
+.applicant {
+    float: left;
+    text-align: center;
+    text-transform: capitalize;
+    width: 5cm;
+    margin: 70px 0px 0px 0px;
+}
+
+.sig-name {
+    margin: 64px 0px 0px 0px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-align: center;
+}

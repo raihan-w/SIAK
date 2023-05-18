@@ -19,7 +19,9 @@
                     <div class="tab-pane fade show active" id="biodata" role="tabpanel" aria-labelledby="biodata-tab">
                         <div class="d-flex flex-row align-items-center justify-content-between px-1">
                             <h4>NIK : <?= $bio['nik']; ?></h4>
-                            <button type="button" class="btn btn-outline-secondary" onclick="update('<?= $bio['nik']; ?>')">Edit</button>
+                            <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                                <button type="button" class="btn btn-outline-secondary" onclick="update('<?= $bio['nik']; ?>')">Edit</button>
+                            <?php endif ?>
                         </div>
                         <div class="table-responsive p-0">
                             <table class="table table-sm table-borderless w-75">
@@ -80,17 +82,19 @@
                     </div>
                     <div class="tab-pane fade" id="document" role="tabpanel" aria-labelledby="doc-tab">
                         <div class="text-right">
-                            <button type="button" class="btn btn-outline-primary" onclick="upload('<?= $bio['nik']; ?>')">Upload</button>
+                            <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                                <button type="button" class="btn btn-outline-primary" onclick="upload('<?= $bio['nik']; ?>')">Upload</button>
+                            <?php endif ?>
                         </div>
                         <?php if ($doc == null) : ?>
                             <p class="text-center m-3">Tidak ada dokumen yang diunggah</p>
                         <?php endif ?>
                         <div class="row my-3">
                             <?php foreach ($doc as $doc) : ?>
-                                <div class="col-12 col-md-4 col-lg-4">
-                                    <div class="card">
-                                        <div class="text-center p-2">
-                                            <img src="<?= base_url(); ?>/document/pdf-icon.png" class="card-img-top w-75">
+                                <div class="col-6 col-sm-3 col-md-3">
+                                    <div class="card shadow">
+                                        <div class="text-center p-4">
+                                            <img src="<?= base_url(); ?>/document/pdf-icon.png" class="card-img-top w-50">
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title"><?= $doc['dokumen']; ?></h5>
@@ -98,7 +102,9 @@
                                         </div>
                                         <div class="card-footer text-center">
                                             <a href="<?= base_url('dokumen/download/' . $doc['id']); ?>" class="btn btn-icon btn-success"><i class="fas fa-download"></i></a>
-                                            <button class="btn btn-icon btn-danger" onclick="unlink('<?= $doc['id']; ?>')"><i class="fas fa-trash"></i></button>
+                                            <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                                                <button class="btn btn-icon btn-danger" onclick="unlink('<?= $doc['id']; ?>')"><i class="fas fa-trash"></i></button>
+                                            <?php endif ?>
                                         </div>
                                     </div>
                                 </div>

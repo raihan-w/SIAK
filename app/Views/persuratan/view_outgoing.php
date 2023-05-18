@@ -22,7 +22,9 @@
                 </td>
                 <td>
                     <a href="<?= base_url('/outgoing/archive/' . $row['id']); ?>" class="btn btn-icon btn-info"><i class="fas fa-info"></i></a>
-                    <button class="btn btn-icon btn-danger" onclick="remove('<?= $row['id']; ?>')"><i class="fas fa-trash"></i></button>
+                    <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                        <button class="btn btn-icon btn-danger" onclick="remove('<?= $row['id']; ?>')"><i class="fas fa-trash"></i></button>
+                    <?php endif ?>
                 </td>
             </tr>
         <?php endforeach ?>

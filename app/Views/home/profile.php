@@ -1,14 +1,18 @@
 <div class="card-body">
-    <div class="float-right mt-sm-0 mt-3">
-        <button class="btn btn-outline-secondary" onclick="setting('<?= $profile['id']; ?>')"><i class="fas fa-cog"></i></button>
-    </div>
+    <?php if (in_groups('administrator')) : ?>
+        <div class="float-right mt-sm-0 mt-3">
+            <button class="btn btn-outline-secondary" onclick="setting('<?= $profile['id']; ?>')"><i class="fas fa-cog"></i></button>
+        </div>
+    <?php endif ?>
     <div class="row">
         <div class="col-sm-3 col-md-3 mb-4 mb-md-0">
             <div class="avatar-item">
                 <img alt="image" src="<?= base_url(); ?>/assets/images/<?= $profile['logo']; ?>" class="img-fluid">
-                <div class="avatar-badge">
-                    <button class="btn" onclick="upload('<?= $profile['id']; ?>')"><i class="fas fa-pencil-alt"></i></button>
-                </div>
+                <?php if (in_groups('administrator')) : ?>
+                    <div class="avatar-badge">
+                        <button class="btn" onclick="upload('<?= $profile['id']; ?>')"><i class="fas fa-pencil-alt"></i></button>
+                    </div>
+                <?php endif ?>
             </div>
         </div>
         <div class="col-sm-9 col-md-9 mb-4 mb-md-0">

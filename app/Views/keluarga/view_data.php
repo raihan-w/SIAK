@@ -18,9 +18,11 @@
                 <td><?= $row['alamat']; ?></td>
                 <td><?= $row['rt']; ?>/<?= $row['rw']; ?></td>
                 <td>
-                    <a href="<?= base_url('kartu-keluarga/daftar/'. $row['no_kk']); ?>" class="btn btn-icon btn-info"><i class="fas fa-list"></i></a>
-                    <?php if ($row['jml'] == '0') : ?>
-                        <button type="button" class="btn btn-icon btn-danger" onclick="remove('<?= $row['no_kk']; ?>')"><i class="fas fa-trash"></i></button>
+                    <a href="<?= base_url('kartu-keluarga/daftar/' . $row['no_kk']); ?>" class="btn btn-icon btn-info"><i class="fas fa-list"></i></a>
+                    <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                        <?php if ($row['jml'] == '0') : ?>
+                            <button type="button" class="btn btn-icon btn-danger" onclick="remove('<?= $row['no_kk']; ?>')"><i class="fas fa-trash"></i></button>
+                        <?php endif ?>
                     <?php endif ?>
                 </td>
             </tr>

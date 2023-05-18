@@ -43,38 +43,42 @@
                 </div>
                 <div class="d-flex flex-row align-items-center justify-content-between px-1">
                     <h5>Lampiran</h5>
-                    <?php if ($outgoing['lampiran'] == null) : ?>
-                        <button type="button" class="btn btn-outline-primary" onclick="upload('<?= $outgoing['id']; ?>')">Upload</button>
+                    <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                        <?php if ($outgoing['lampiran'] == null) : ?>
+                            <button type="button" class="btn btn-outline-primary" onclick="upload('<?= $outgoing['id']; ?>')">Upload</button>
+                        <?php endif ?>
                     <?php endif ?>
                 </div>
-                <div class="">
-                    <?php if ($outgoing['lampiran'] != null) : ?>
-                        <table class="table table-bordered" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="w-75"> Dokumen </th>
-                                    <th> Action </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td> <?= $outgoing['lampiran']; ?> </td>
-                                    <td>
-                                        <form action="<?= base_url('persuratan/unlink/' . $outgoing['id']); ?>" method="POST" class="d-inline">
-                                            <?= csrf_field(); ?>
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Are you sure?')">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <iframe src="<?= base_url('attachment/' . $outgoing['lampiran']); ?>" width="100%" height="500px">
+                <?php if ($outgoing['lampiran'] != null) : ?>
+                    <div class="">
+                        <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="w-75"> Dokumen </th>
+                                        <th> Action </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> <?= $outgoing['lampiran']; ?> </td>
+                                        <td>
+                                            <form action="<?= base_url('persuratan/unlink/' . $outgoing['id']); ?>" method="POST" class="d-inline">
+                                                <?= csrf_field(); ?>
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-icon btn-danger" onclick="return confirm('Are you sure?')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         <?php endif ?>
-                        <p class="text-center m-3">Tidak ada dokumen yang diunggah</p>
-                </div>
+                        <iframe src="<?= base_url('attachment/' . $outgoing['lampiran']); ?>" width="100%" height="500px">
+                    </div>
+                <?php endif ?>
+                <p class="text-center m-3">Tidak ada dokumen yang diunggah</p>
             </div>
         </div>
     </div>

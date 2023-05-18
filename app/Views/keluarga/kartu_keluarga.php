@@ -8,10 +8,12 @@
     <div class="section-body">
         <div class="card">
             <div class="card-body">
-                <div class="float-right mt-sm-0 mt-3">
-                    <button class="btn btn-outline-secondary" onclick="update('<?= $kartu['no_kk']; ?>')"><i class="fas fa-cog"></i></button>
-                </div>
-                <table class="table table-sm table-borderless w-75">
+                <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                    <div class="float-right mt-sm-0 mt-3">
+                        <button class="btn btn-outline-secondary" onclick="update('<?= $kartu['no_kk']; ?>')"><i class="fas fa-cog"></i></button>
+                    </div>
+                <?php endif ?>
+                <table class="table table-sm table-borderless w-50">
                     <tbody>
                         <tr>
                             <th>No. Kartu Keluarga</th>

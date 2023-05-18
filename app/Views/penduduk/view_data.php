@@ -19,7 +19,9 @@
                 <td><?= $row['gender']; ?></td>
                 <td>
                     <a href="<?= base_url('/penduduk/biodata/' . $row['nik']); ?>" class="btn btn-icon btn-info"><i class="fas fa-user"></i></a>
-                    <button type="button" class="btn btn-icon btn-danger" onclick="remove('<?= $row['nik']; ?>')"><i class="fas fa-trash"></i></button>
+                    <?php if (in_groups('administrator') || in_groups('operator')) : ?>
+                        <button type="button" class="btn btn-icon btn-danger" onclick="remove('<?= $row['nik']; ?>')"><i class="fas fa-trash"></i></button>
+                    <?php endif ?>
                 </td>
             </tr>
         <?php endforeach; ?>

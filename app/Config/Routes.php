@@ -38,23 +38,29 @@ $routes->get('/penduduk/create', 'Kependudukan::create');
 $routes->get('/kartu-keluarga', 'Keluarga::index');
 $routes->get('/kartu-keluarga/daftar/(:segment)', 'keluarga::kartu/$1');
 
-$routes->get('perangkat', 'Perangkat::index');
 $routes->get('profile', 'Users::profile');
-$routes->get('users', 'Users::index');
-$routes->get('users/create', 'Users::create');
 $routes->get('users/update/(:segment)', 'Users::update/$1');
+$routes->group('', ['filter' => 'role:administrator'], function ($routes) {
+    $routes->get('users', 'Users::index');
+    $routes->get('users/create', 'Users::create');
+    $routes->get('perangkat', 'Perangkat::index');
+});
 
 $routes->get('/outgoing', 'Persuratan::index');
 $routes->get('/outgoing/archive/(:segment)', 'Persuratan::archive/$1');
-$routes->delete('outgoing/unlink/(:num)', 'Outgoing::unlink/$1');
+$routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
+    $routes->delete('outgoing/unlink/(:num)', 'Outgoing::unlink/$1');
+});
 
-$routes->get('/form-bedanama', 'Persuratan::bedanama');
-$routes->get('/form-bidikmisi', 'Persuratan::bidikmisi');
-$routes->get('/form-domisili', 'Persuratan::domisili');
-$routes->get('/form-keterangan', 'Persuratan::keterangan');
-$routes->get('/form-kematian', 'Persuratan::kematian');
-$routes->get('/form-tidak-mampu', 'Persuratan::tidakmampu');
-$routes->get('/form-pengantar', 'Persuratan::pengantar');
+$routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
+    $routes->get('/form-bedanama', 'Persuratan::bedanama');
+    $routes->get('/form-bidikmisi', 'Persuratan::bidikmisi');
+    $routes->get('/form-domisili', 'Persuratan::domisili');
+    $routes->get('/form-keterangan', 'Persuratan::keterangan');
+    $routes->get('/form-kematian', 'Persuratan::kematian');
+    $routes->get('/form-tidak-mampu', 'Persuratan::tidakmampu');
+    $routes->get('/form-pengantar', 'Persuratan::pengantar');
+});
 
 /*
  * --------------------------------------------------------------------

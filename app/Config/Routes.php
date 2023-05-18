@@ -34,9 +34,11 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/penduduk', 'Kependudukan::index');
 $routes->get('/penduduk/biodata/(:segment)', 'Kependudukan::biodata/$1');
-$routes->get('/penduduk/create', 'Kependudukan::create');
 $routes->get('/kartu-keluarga', 'Keluarga::index');
 $routes->get('/kartu-keluarga/daftar/(:segment)', 'keluarga::kartu/$1');
+$routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
+    $routes->get('/penduduk/create', 'Kependudukan::create');
+});
 
 $routes->get('profile', 'Users::profile');
 $routes->get('users/update/(:segment)', 'Users::update/$1');
@@ -50,9 +52,6 @@ $routes->get('/outgoing', 'Persuratan::index');
 $routes->get('/outgoing/archive/(:segment)', 'Persuratan::archive/$1');
 $routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
     $routes->delete('outgoing/unlink/(:num)', 'Outgoing::unlink/$1');
-});
-
-$routes->group('', ['filter' => 'role:administrator,operator'], function ($routes) {
     $routes->get('/form-bedanama', 'Persuratan::bedanama');
     $routes->get('/form-bidikmisi', 'Persuratan::bidikmisi');
     $routes->get('/form-domisili', 'Persuratan::domisili');

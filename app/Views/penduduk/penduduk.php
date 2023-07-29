@@ -12,7 +12,7 @@
                     <div class="card-title">
                         <a href="<?= base_url('penduduk/create'); ?>" class="btn btn-icon icon-left btn-primary"><i class="fas fa-plus"></i>Tambah</a>
                         <button class="btn btn-icon icon-left btn-primary" id="import-btn"><i class="fas fa-file-import"></i>Import</button>
-                        <div class="dropdown d-inline mr-2">
+                        <!-- <div class="dropdown d-inline mr-2">
                             <button class="btn btn-icon icon-left btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-file-export"></i>
                                 Export
@@ -21,7 +21,7 @@
                                 <a class="dropdown-item" href="#">Excel</a>
                                 <a class="dropdown-item" href="#">PDF</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 <?php endif ?>
                 <div class="table-responsive show"></div>

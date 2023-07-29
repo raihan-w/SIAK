@@ -10,7 +10,15 @@
             <div class="d-sm-none d-lg-inline-block">Hi, <?= user()->username; ?></div>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-title">Logged in 5 min ago</div>
+            <div class="dropdown-title text-center">
+                <?php if ($profile->role == 'administrator') : ?>
+                    <div class="badge badge-success"><?= $profile->role; ?></div>
+                <?php elseif ($profile->role == 'operator') : ?>
+                    <div class="badge badge-warning"><?= $profile->role; ?></div>
+                <?php else : ?>
+                    <div class="badge badge-info"><?= $profile->role; ?></div>
+                <?php endif ?>
+            </div>
             <a href="<?= base_url('profile'); ?>" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Profile
             </a>
